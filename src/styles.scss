@@ -1,1 +1,6 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import "./assets/styles/reset.scss";
+
+html, body {
+  height: 100%;
+}
