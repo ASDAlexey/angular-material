@@ -2,7 +2,23 @@ mat-sidenav {
   width: 500px;
 }
 
-mat-sidenav-container{
+mat-sidenav-container {
   flex: 1 1 auto;
   height: 100%;
+}
+
+.lesson-component {
+  padding: 20px;
+}
+
+.toolbar {
+  &__primary {
+    position: fixed;
+    top: 0;
+  }
+
+  &__secondary {
+    font-size: 34px;
+    padding: 100px 0 48px 32px;
+  }
 }

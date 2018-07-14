@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<!--<mat-sidenav-container>
   <mat-sidenav #sidenav></mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -8,4 +8,24 @@
       ASDAlexey Material
     </mat-toolbar>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container>-->
+<mat-toolbar color="accent" class="toolbar__primary" [class.mat-elevation-z2]="applyShadow">
+  <span *ngIf="popText">Header toolbar</span>
+</mat-toolbar>
+<mat-toolbar color="accent" class="toolbar__secondary">
+  <span *ngIf="!popText">Material toolbars</span>
+</mat-toolbar>
+
+
+<div class="lesson-component">
+  <mat-toolbar>Basic toolbar</mat-toolbar>
+  <mat-toolbar color="primary">Primary</mat-toolbar>
+  <mat-toolbar color="accent">Accent</mat-toolbar>
+  <mat-toolbar color="warn">Warn</mat-toolbar>
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>Row 1</mat-toolbar-row>
+    <mat-toolbar-row>Row 2</mat-toolbar-row>
+    <mat-toolbar-row>Row 3</mat-toolbar-row>
+  </mat-toolbar>
+</div>
