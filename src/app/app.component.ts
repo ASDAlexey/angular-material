@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export const SCOLL_CONTAINER = '.mat-dawer-content';
 export const PIMARY_TEXT_THRESHOLD = 22;
@@ -15,7 +17,13 @@ export class AppComponent implements OnInit, OnDestroy {
   popText: boolean;
   applyShadow: boolean;
   subsctiption = new Subject();
-  title = 'app';
+
+  constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'podcast',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/podcast.svg')
+    );
+  }
 
   ngOnInit() {
     fromEvent(document, 'scroll').pipe(takeUntil(this.subsctiption)).subscribe(() => this.determineHeader(window.pageYOffset));

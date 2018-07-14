@@ -9,6 +9,7 @@
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>-->
+<!--
 <mat-toolbar color="accent" class="toolbar__primary" [class.mat-elevation-z2]="applyShadow">
   <span *ngIf="popText">Header toolbar</span>
 </mat-toolbar>
@@ -28,4 +29,43 @@
     <mat-toolbar-row>Row 2</mat-toolbar-row>
     <mat-toolbar-row>Row 3</mat-toolbar-row>
   </mat-toolbar>
-</div>
+</div>-->
+
+<h2>Basic icons</h2>
+<mat-icon>check_circle</mat-icon>
+<mat-icon>list</mat-icon>
+<mat-icon>close</mat-icon>
+
+<h2>Icon color</h2>
+<mat-icon color="primary">check_circle</mat-icon>
+<mat-icon color="accent">list</mat-icon>
+<mat-icon color="warn">close</mat-icon>
+
+<h2>Buttons</h2>
+<button mat-icon-button>
+  <mat-icon color="primary">check_circle</mat-icon>
+</button>
+<mat-icon color="accent">list</mat-icon>
+<mat-icon color="warn">close</mat-icon>
+
+<h2>FAB Buttons</h2>
+<button mat-fab color="primary">
+  <mat-icon>check_circle</mat-icon>
+</button>
+<button mat-fab color="accent">
+  <mat-icon>list</mat-icon>
+</button>
+<button mat-fab color="warn">
+  <mat-icon>close</mat-icon>
+</button>
+
+<h2>mini FAB Buttons</h2>
+<button mat-mini-fab color="primary">
+  <mat-icon svgIcon="podcast"></mat-icon>
+</button>
+<button mat-mini-fab color="accent">
+  <mat-icon>list</mat-icon>
+</button>
+<button mat-mini-fab color="warn">
+  <mat-icon>close</mat-icon>
+</button>
