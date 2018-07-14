@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatIconRegistry, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -17,4 +18,10 @@ import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToo
   declarations: []
 })
 export class AppMaterialModule {
+  constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'podcast',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/podcast.svg')
+    );
+  }
 }

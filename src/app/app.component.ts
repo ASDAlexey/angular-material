@@ -18,13 +18,6 @@ export class AppComponent implements OnInit, OnDestroy {
   applyShadow: boolean;
   subsctiption = new Subject();
 
-  constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'podcast',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/podcast.svg')
-    );
-  }
-
   ngOnInit() {
     fromEvent(document, 'scroll').pipe(takeUntil(this.subsctiption)).subscribe(() => this.determineHeader(window.pageYOffset));
   }
