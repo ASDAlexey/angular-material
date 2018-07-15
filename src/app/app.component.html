@@ -70,7 +70,7 @@
   <mat-icon>close</mat-icon>
 </button>-->
 
-<h2>Basic input</h2>
+<!--<h2>Basic input</h2>-->
 <!--<mat-form-field floatLabel="always">-->
 <!--<mat-form-field>
   <input
@@ -117,7 +117,7 @@
   </mat-form-field>
 </form>
 -->
-
+<!--
 <h2>Progress bar</h2>
 
 <h3>Determinate</h3>
@@ -156,5 +156,19 @@
   [value]="loadingPercent$ | async"
   *ngIf="(loadingPercent$ | async) < 100"
   [@fadeOut]="'in'"
-></mat-progress-spinner>
+></mat-progress-spinner>-->
 
+<!--
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>check</mat-icon>
+      First tab
+    </ng-template>
+    First tab content
+  </mat-tab>
+  <mat-tab label="Second tab">Second tab content</mat-tab>
+</mat-tab-group>
+-->
+
+<router-outlet></router-outlet>
