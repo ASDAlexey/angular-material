@@ -91,6 +91,7 @@
   <mat-hint align="end">{{ password.value.length }}/16</mat-hint>
 </mat-form-field>-->
 
+<!--
 <form autocomplete="off">
   <mat-form-field>
     <input
@@ -115,3 +116,30 @@
     <mat-hint align="end">{{ password?.length }}/16</mat-hint>
   </mat-form-field>
 </form>
+-->
+
+<h2>Progress bar</h2>
+
+<h3>Determinate</h3>
+<div class="lesson-component">
+  <mat-progress-bar [value]="loadingPercent$ | async"></mat-progress-bar>
+</div>
+
+<div class="lesson-component">
+  <mat-progress-bar [value]="loadingPercent$ | async" color="accent"></mat-progress-bar>
+</div>
+
+<div class="lesson-component">
+  <mat-progress-bar [value]="loadingPercent$ | async" color="warn"></mat-progress-bar>
+</div>
+
+<h3>Indeterminate</h3>
+<div class="lesson-component">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<h3>Query</h3>
+<div class="lesson-component">
+  <mat-progress-bar [mode]="queryMode" [value]="queryValue"></mat-progress-bar>
+</div>
+

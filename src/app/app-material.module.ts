@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatIconRegistry,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatProgressBarModule, MatProgressSpinnerModule,
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
@@ -24,6 +24,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatButtonModule,
     MatSidenavModule,
     MatInputModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [],
   providers: [

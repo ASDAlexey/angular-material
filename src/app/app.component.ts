@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { concat, fromEvent, interval, Observable, Subject } from 'rxjs';
+import { ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { ErrorStateMatcher, MatIconRegistry } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 
@@ -28,9 +28,30 @@ export class AppComponent implements OnInit, OnDestroy {
   applyShadow: boolean;
   subsctiption = new Subject();
   customErrorStateMatcher = new CustomErrorStateMatcher();
+  loadingPercent$: Observable<number>;
+  queryValue = 0;
+  queryMode = 'indeterminate';
 
   ngOnInit() {
     fromEvent(document, 'scroll').pipe(takeUntil(this.subsctiption)).subscribe(() => this.determineHeader(window.pageYOffset));
+
+    this.loadingPercent$ = this.loadingPogress(500);
+
+    concat(
+      interval(2000).pipe(
+        take(1),
+        tap(_ => this.queryMode = 'determinate'),
+        ignoreElements(),
+      ),
+      this.loadingPogress(500),
+    ).subscribe((t) => this.queryValue = t);
+  }
+
+  loadingPogress(speed: number) {
+    return interval(speed).pipe(
+      map(i => i * 10),
+      takeWhile(i => i <= 100)
+    );
   }
 
   determineHeader(top: number) {
@@ -42,6 +63,5 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subsctiption.next();
     this.subsctiption.complete();
-
   }
 }
