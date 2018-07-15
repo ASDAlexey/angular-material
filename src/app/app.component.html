@@ -143,3 +143,18 @@
   <mat-progress-bar [mode]="queryMode" [value]="queryValue"></mat-progress-bar>
 </div>
 
+<h3>Buffer</h3>
+<mat-progress-bar mode="buffer" [value]="loadingPercent$ | async"
+                  [bufferValue]="currentPlayback"></mat-progress-bar>
+
+<h2>Spinners</h2>
+<h3>Indetetminate (default)</h3>
+<mat-spinner></mat-spinner>
+
+<h3>Determinate</h3>
+<mat-progress-spinner
+  [value]="loadingPercent$ | async"
+  *ngIf="(loadingPercent$ | async) < 100"
+  [@fadeOut]="'in'"
+></mat-progress-spinner>
+

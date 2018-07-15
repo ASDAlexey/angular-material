@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { concat, fromEvent, interval, Observable, Subject } from 'rxjs';
+import { concat, fromEvent, interval, Observable, of, Subject } from 'rxjs';
 import { ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { ErrorStateMatcher, MatIconRegistry } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 export const SCOLL_CONTAINER = '.mat-dawer-content';
 export const PIMARY_TEXT_THRESHOLD = 22;
@@ -20,6 +21,14 @@ export class CustomErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  animations: [
+    trigger('fadeOut', [
+      state('in', style({ opacity: 1 })),
+      transition('* => void', [
+        animate(`.5s ease-out`, style({ opacity: 0 }))
+      ])
+    ])
+  ],
   styleUrls: ['./app.component.scss'],
   providers: [CustomErrorStateMatcher],
 })
@@ -30,12 +39,14 @@ export class AppComponent implements OnInit, OnDestroy {
   customErrorStateMatcher = new CustomErrorStateMatcher();
   loadingPercent$: Observable<number>;
   queryValue = 0;
+  currentPlayback = 0;
   queryMode = 'indeterminate';
 
   ngOnInit() {
     fromEvent(document, 'scroll').pipe(takeUntil(this.subsctiption)).subscribe(() => this.determineHeader(window.pageYOffset));
 
     this.loadingPercent$ = this.loadingPogress(500);
+    this.loadingPogress(250).subscribe((i) => (this.currentPlayback = i));
 
     concat(
       interval(2000).pipe(
