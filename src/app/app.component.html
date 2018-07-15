@@ -96,9 +96,10 @@
     <input
       name="pwd"
       autocomplete="new-password"
-      type="password"
+      type="text"
       #passwordInput="ngModel"
       [(ngModel)]="password"
+      [errorStateMatcher]="customErrorStateMatcher"
       placeholder="Basic input"
       matInput
       minlength="6"
