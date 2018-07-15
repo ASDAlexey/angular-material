@@ -175,6 +175,7 @@
 
 <!--<button mat-button (click)="openDialog()">Open dialog</button>-->
 
+<!--
 <h2>Basic datepicker</h2>
 
 <mat-form-field>
@@ -192,3 +193,22 @@
     [touchUi]="isTouchDevice"
   ></mat-datepicker>
 </mat-form-field>
+-->
+<div class="mat-elevation-z4">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let operator">{{ operator.id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let operator">{{ operator.name }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['id','name']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns:['id','name']"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[2,5,10]"
+  ></mat-paginator>
+</div>

@@ -6,10 +6,10 @@ import {
   MatIconModule,
   MatIconRegistry,
   MatInputModule,
-  MatListModule, MatNativeDateModule,
+  MatListModule, MatNativeDateModule, MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSortModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -37,6 +37,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatNativeDateModule,
     PlatformModule,
     MatMomentDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   declarations: [],
   providers: [

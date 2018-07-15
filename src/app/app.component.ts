@@ -1,8 +1,8 @@
 import * as moment from 'moment';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { concat, fromEvent, interval, Observable, of, Subject } from 'rxjs';
 import { filter, ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
-import { ErrorStateMatcher, MatDialog, MatIconRegistry } from '@angular/material';
+import { ErrorStateMatcher, MatDialog, MatIconRegistry, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DialogComponent } from './dialog/dialog.component';
@@ -35,7 +35,7 @@ export class CustomErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./app.component.scss'],
   providers: [CustomErrorStateMatcher],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   popText: boolean;
   applyShadow: boolean;
   subsctiption = new Subject();
@@ -47,8 +47,26 @@ export class AppComponent implements OnInit, OnDestroy {
   startDate = moment([2017, 10, 1]);
   minDate = moment([2017, 9, 1]);
   maxDate = moment([2017, 11, 24]);
+  dataSource = new MatTableDataSource([
+    { id: 1, name: 'Alexey' },
+    { id: 2, name: 'Alexey 2' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 3, name: 'Alexey 3' },
+    { id: 9, name: 'Alexey 9' },
+  ]);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(public dialog: MatDialog, private platform: Platform) {
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   get isTouchDevice() {
@@ -86,7 +104,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   determineHeader(top: number) {
-    console.log(top);
     this.popText = top >= PIMARY_TEXT_THRESHOLD;
     this.applyShadow = top >= PIMARY_SHADOW_THRESHOLD;
   }
