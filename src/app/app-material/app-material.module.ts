@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MAT_LABEL_GLOBAL_OPTIONS,
-  MatButtonModule, MatDialogModule,
+  MatButtonModule, MatDatepickerModule, MatDialogModule,
   MatIconModule,
   MatIconRegistry,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatNativeDateModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
@@ -14,6 +14,8 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PlatformModule } from '@angular/cdk/platform';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -31,10 +33,15 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    PlatformModule,
+    MatMomentDateModule,
   ],
   declarations: [],
   providers: [
     // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }
+    // providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }]
   ],
 })
 export class AppMaterialModule {

@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { concat, fromEvent, interval, Observable, of, Subject } from 'rxjs';
 import { filter, ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
@@ -5,6 +6,7 @@ import { ErrorStateMatcher, MatDialog, MatIconRegistry } from '@angular/material
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DialogComponent } from './dialog/dialog.component';
+import { Platform } from '@angular/cdk/platform';
 
 export const SCOLL_CONTAINER = '.mat-dawer-content';
 export const PIMARY_TEXT_THRESHOLD = 22;
@@ -42,8 +44,15 @@ export class AppComponent implements OnInit, OnDestroy {
   queryValue = 0;
   currentPlayback = 0;
   queryMode = 'indeterminate';
+  startDate = moment([2017, 10, 1]);
+  minDate = moment([2017, 9, 1]);
+  maxDate = moment([2017, 11, 24]);
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private platform: Platform) {
+  }
+
+  get isTouchDevice() {
+    return this.platform.ANDROID || this.platform.IOS;
   }
 
   openDialog() {

@@ -173,4 +173,22 @@
 
 <!--<router-outlet></router-outlet>-->
 
-<button mat-button (click)="openDialog()">Open dialog</button>
+<!--<button mat-button (click)="openDialog()">Open dialog</button>-->
+
+<h2>Basic datepicker</h2>
+
+<mat-form-field>
+  <input
+    matInput
+    [matDatepicker]="datepicker"
+    [min]="minDate"
+    [max]="maxDate"
+  >
+  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+  <mat-datepicker
+    #datepicker
+    startView="year"
+    [startAt]="startDate"
+    [touchUi]="isTouchDevice"
+  ></mat-datepicker>
+</mat-form-field>
