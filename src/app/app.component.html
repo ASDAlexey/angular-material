@@ -31,7 +31,7 @@
   </mat-toolbar>
 </div>-->
 
-<h2>Basic icons</h2>
+<!--<h2>Basic icons</h2>
 <mat-icon>check_circle</mat-icon>
 <mat-icon>list</mat-icon>
 <mat-icon>close</mat-icon>
@@ -68,4 +68,49 @@
 </button>
 <button mat-mini-fab color="warn">
   <mat-icon>close</mat-icon>
-</button>
+</button>-->
+
+<h2>Basic input</h2>
+<!--<mat-form-field floatLabel="always">-->
+<!--<mat-form-field>
+  <input
+    type="text"
+    placeholder="Basic input"
+    matInput
+  >
+  <mat-hint align="end">1 special character required.</mat-hint>
+</mat-form-field>-->
+<!--<mat-form-field>
+  <input
+    type="password"
+    #password
+    placeholder="Basic input"
+    matInput
+  >
+  <mat-hint align="start">1 special character required.</mat-hint>
+  <mat-hint align="end">{{ password.value.length }}/16</mat-hint>
+</mat-form-field>-->
+
+<form autocomplete="off">
+  <mat-form-field>
+    <input
+      name="pwd"
+      autocomplete="new-password"
+      type="password"
+      #passwordInput="ngModel"
+      [(ngModel)]="password"
+      placeholder="Basic input"
+      matInput
+      minlength="6"
+      required
+    >
+    <mat-error *ngIf="passwordInput.errors?.required">
+      This field is required
+    </mat-error>
+    <mat-error *ngIf="passwordInput.errors?.minlength">
+      6 characters required
+    </mat-error>
+    <mat-hint align="start">Password must be at least 6 characters</mat-hint>
+    <mat-hint align="end">{{ password?.length }}/16</mat-hint>
+  </mat-form-field>
+</form>

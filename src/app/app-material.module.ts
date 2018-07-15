@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatIconModule, MatIconRegistry, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+  MAT_LABEL_GLOBAL_OPTIONS,
+  MatButtonModule,
+  MatIconModule,
+  MatIconRegistry,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
@@ -14,8 +23,12 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatInputModule,
   ],
-  declarations: []
+  declarations: [],
+  providers: [
+    // { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } }
+  ],
 })
 export class AppMaterialModule {
   constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
