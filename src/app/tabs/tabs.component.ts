@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routes } from '../app.module';
+// import { routes } from '../app.module';
 
 @Component({
   selector: 'app-tabs',
@@ -7,10 +7,10 @@ import { routes } from '../app.module';
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit {
-  tabRoutes = routes.filter(r => r.path === 'tabs')
-                    .map(({ children }) => children)
-                    .reduce((acc, curr) => [...acc, ...curr], [])
-                    .filter(({ path }) => !!path);
+  // tabRoutes = routes.filter(r => r.path === 'tabs')
+  //                   .map(({ children }) => children)
+  //                   .reduce((acc, curr) => [...acc, ...curr], [])
+  //                   .filter(({ path }) => !!path);
 
   constructor() {
   }

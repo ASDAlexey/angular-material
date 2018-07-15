@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Save Progress {{ itemType }}</h2>
+<mat-dialog-content>
+  Before yoy go, would like to save your profile {{ itemType }}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>

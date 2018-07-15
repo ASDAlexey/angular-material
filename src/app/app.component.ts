@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { concat, fromEvent, interval, Observable, of, Subject } from 'rxjs';
-import { ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
-import { ErrorStateMatcher, MatIconRegistry } from '@angular/material';
+import { filter, ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
+import { ErrorStateMatcher, MatDialog, MatIconRegistry } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DialogComponent } from './dialog/dialog.component';
 
 export const SCOLL_CONTAINER = '.mat-dawer-content';
 export const PIMARY_TEXT_THRESHOLD = 22;
@@ -41,6 +42,16 @@ export class AppComponent implements OnInit, OnDestroy {
   queryValue = 0;
   currentPlayback = 0;
   queryMode = 'indeterminate';
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, { data: 'email' });
+    dialogRef.afterClosed().pipe(
+      filter(r => !!r),
+    ).subscribe(console.log);
+  }
 
   ngOnInit() {
     fromEvent(document, 'scroll').pipe(takeUntil(this.subsctiption)).subscribe(() => this.determineHeader(window.pageYOffset));

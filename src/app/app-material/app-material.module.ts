@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MAT_LABEL_GLOBAL_OPTIONS,
-  MatButtonModule,
+  MatButtonModule, MatDialogModule,
   MatIconModule,
   MatIconRegistry,
   MatInputModule,
@@ -30,6 +30,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatDialogModule,
   ],
   declarations: [],
   providers: [
