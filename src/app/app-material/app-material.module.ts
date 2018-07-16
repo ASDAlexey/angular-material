@@ -9,7 +9,7 @@ import {
   MatListModule, MatNativeDateModule, MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatSidenavModule, MatSortModule, MatTableModule,
+  MatSidenavModule, MatSnackBarModule, MatSortModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -40,6 +40,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSnackBarModule,
   ],
   declarations: [],
   providers: [

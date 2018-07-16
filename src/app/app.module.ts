@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 // import { TabTwoComponent } from './tab-two/tab-two.component';
 // import { TabsComponent } from './tabs/tabs.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.component';
 
 // export const routes = [
 //   {
@@ -29,6 +30,7 @@ import { DialogComponent } from './dialog/dialog.component';
   declarations: [
     AppComponent,
     DialogComponent,
+    CustomSnackbarComponent,
     // TabOneComponent,
     // TabTwoComponent,
     // TabsComponent,
@@ -41,7 +43,7 @@ import { DialogComponent } from './dialog/dialog.component';
     FormsModule,
     // RouterModule.forRoot(routes)
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, CustomSnackbarComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

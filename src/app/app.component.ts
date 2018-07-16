@@ -2,11 +2,12 @@ import * as moment from 'moment';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { concat, fromEvent, interval, Observable, of, Subject } from 'rxjs';
 import { filter, ignoreElements, map, take, takeUntil, takeWhile, tap } from 'rxjs/operators';
-import { ErrorStateMatcher, MatDialog, MatIconRegistry, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { ErrorStateMatcher, MatDialog, MatIconRegistry, MatPaginator, MatSnackBar, MatSort, MatTableDataSource } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DialogComponent } from './dialog/dialog.component';
 import { Platform } from '@angular/cdk/platform';
+import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.component';
 
 export const SCOLL_CONTAINER = '.mat-dawer-content';
 export const PIMARY_TEXT_THRESHOLD = 22;
@@ -61,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog, private platform: Platform) {
+  constructor(public dialog: MatDialog, private platform: Platform, private snackBar: MatSnackBar) {
   }
 
   ngAfterViewInit() {
@@ -94,6 +95,27 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       ),
       this.loadingPogress(500),
     ).subscribe((t) => this.queryValue = t);
+  }
+
+  openSnackbar() {
+    // const snackbar = this.snackBar.open('Hello world!!!', 'Close', {
+    //   duration: 3000,
+    //   verticalPosition: 'top',
+    // });
+
+    const snackbar = this.snackBar.openFromComponent(CustomSnackbarComponent, {
+      data: 'message',
+      duration: 3000,
+      verticalPosition: 'top',
+    });
+
+    snackbar.afterDismissed().subscribe(() => {
+      console.log('afterDismissed');
+    });
+
+    snackbar.onAction().subscribe(() => {
+      console.log('onAction');
+    });
   }
 
   loadingPogress(speed: number) {
