@@ -1,5 +1,27 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
 @import "./assets/styles/reset.scss";
+
+@mixin app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .primary-text {
+    color: mat-color($primary, darker, .7);
+  }
+
+  // @include custom-theme()
+}
+
+@include mat-core();
+$primary: mat-palette($mat-purple);
+$accent: mat-palette($mat-blue, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+//$theme: mat-dark-theme($primary, $accent);
+@include angular-material-theme($theme);
+@include app-theme($theme);
 
 html, body {
   height: 100%;
